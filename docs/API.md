@@ -1,13 +1,13 @@
+
 # Phantom Mask API 文件
 
 - 所有 API 回傳皆為 JSON 格式。  
 - API 伺服器預設位址：`http://127.0.0.1:5000/`
 
-
-
 ---
-## GET /pharmacies/open 
+
 ## 1.依據星期幾與時間，列出當時有開門的所有藥局
+## GET /pharmacies/open 
 
 - **說明**：依據星期幾與時間，列出當時有開門的所有藥局
 - **參數**：
@@ -31,8 +31,8 @@
     ```
 
 ---
-## GET /pharmacy/<pharmacy_id>/masks 
 ## 2.查詢指定藥局的所有口罩，可依名稱或價格排序，並可指定升/降冪
+## GET /pharmacy/<pharmacy_id>/masks 
 
 - 說明：查詢指定藥局的所有口罩，可依名稱或價格排序，並可指定升/降冪
 - 參數：
@@ -56,8 +56,8 @@
     ```
 ---
 
-## GET /pharmacies/mask_count 
 ## 3.列出在特定價格範圍內，販售的口罩數量多於或少於 X 種的藥局
+## GET /pharmacies/mask_count 
 
 - 說明：列出在特定價格範圍內，販售的口罩數量多於或少於 X 種的藥局
 - 參數：
@@ -88,10 +88,9 @@
     ]
     ```
 
-
 ---
-## GET /users/top_transactions 
 ##　4.查詢特定日期範圍內，總口罩交易金額最高的前 x 位用戶
+## GET /users/top_transactions 
 
 - 說明：查詢特定日期範圍內，總口罩交易金額最高的前 x 位用戶
 - 參數：
@@ -116,8 +115,8 @@
 
 
 ---
-## GET /transactions/summary 
 ## 5.計算在特定日期範圍內，總共販售的口罩數量與交易金額總額
+## GET /transactions/summary 
 
 - 說明：計算在特定日期範圍內，總共販售的口罩數量與交易金額總額
 - 參數：
@@ -135,8 +134,8 @@
     }
     ```
 ---
-## GET /search 
 ## 6.依名稱搜尋藥局或口罩，並依與關鍵字相關性排序結果
+## GET /search 
 
 - 說明：依名稱搜尋藥局或口罩，並依與關鍵字相關性排序結果
 - 參數：
@@ -160,8 +159,8 @@
     ```
 ---
 
-## POST /purchase
 ## 7.處理用戶購買口罩的過程
+## POST /purchase
 
 - 說明：處理用戶購買口罩的過程，可同時從多個藥局購買
 - 輸入：
@@ -181,7 +180,7 @@
     }
     ```
 
-- 或是在ｃｍｄ輸入下列字元:
+- 或是在cmd輸入下列字元:
     - curl -X POST http://127.0.0.1:5000/purchase -H "Content-Type: application/json" -d "{\"user_id\": 1, \"items\":[{\"pharmacy_id\": 1, \"mask_id\": 2, \"quantity\": 3}]}"
 
 
@@ -215,111 +214,6 @@
     { "error": "用戶餘額不足" }
     ```
 ---
----
-
-## GET /pharmacies
-
-- **說明**：查詢所有藥局的基本資料
-- **參數**：無
-- **回傳**：
-    - 藥局陣列（JSON）
-- **範例**：
-    ```
-    GET /pharmacies
-    ```
-- **回傳範例**：
-    ```json
-    [
-      {
-        "id": 1,
-        "name": "DFW Wellness",
-        "cash_balance": 328.41
-      },
-      {
-        "id": 2,
-        "name": "Keystone Pharmacy",
-        "cash_balance": 500.00
-      }
-    ]
-    ```
-
----
-
-
-
-## GET /pharmacy/<pharmacy_id>/masks
-
-- **說明**：查詢指定藥局的所有口罩
-- **參數**：
-    - `pharmacy_id`: (必填) 藥局的 ID（路徑參數）
-- **回傳**：
-    - 口罩陣列（JSON）
-- **範例**：
-    ```
-    GET /pharmacy/1/masks
-    ```
-- **回傳範例**：
-    ```json
-    [
-      {
-        "id": 1,
-        "pharmacy_id": 1,
-        "name": "True Barrier (green) (3 per pack)",
-        "price": 13.7
-      }
-    ]
-    ```
-
----
-
-## GET /users
-
-- **說明**：查詢所有使用者基本資料
-- **參數**：無
-- **回傳**：
-    - 使用者陣列（JSON）
-- **範例**：
-    ```
-    GET /users
-    ```
-- **回傳範例**：
-    ```json
-    [
-      {
-        "id": 1,
-        "name": "Yvonne Guerrero",
-        "cash_balance": 191.83
-      }
-    ]
-    ```
-
----
-
-## GET /user/<user_id>/purchases
-
-- **說明**：查詢指定使用者的所有購買紀錄
-- **參數**：
-    - `user_id`: (必填) 使用者的 ID（路徑參數）
-- **回傳**：
-    - 購買紀錄陣列（JSON）
-- **範例**：
-    ```
-    GET /user/1/purchases
-    ```
-- **回傳範例**：
-    ```json
-    [
-      {
-        "id": 1,
-        "user_id": 1,
-        "pharmacy_name": "Keystone Pharmacy",
-        "mask_name": "True Barrier (green) (3 per pack)",
-        "transaction_amount": 12.35,
-        "transaction_date": "2021-01-04 15:18:51"
-      }
-    ]
-    ```
-
 ## 錯誤回傳格式
 
 - 若請求參數有誤或找不到資料時，回傳格式如下：
