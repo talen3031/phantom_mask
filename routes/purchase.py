@@ -55,10 +55,10 @@ def transaction_summary():
     total_quantity = row['total_quantity'] if row['total_quantity'] is not None else 0
     total_transaction = row['total_transaction'] if row['total_transaction'] is not None else 0
 
-    return jsonify({
+    return jsonify([{
         "total_quantity": total_quantity,
         "total_transaction": total_transaction
-    })
+    }])
 
 
 #7.處理用戶購買口罩的過程
@@ -81,6 +81,7 @@ def purchase():
         user_row = cur.fetchone()
         if not user_row:
             conn.close()
+            #找不到用戶
             return jsonify({"error": f"can't found the user{user_id}"}), 404
 
         user_balance = user_row['cash_balance']

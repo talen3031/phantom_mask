@@ -13,58 +13,64 @@
 - [O] 5.The total number of masks and dollar value of transactions within a date range.
   - Implemented at route/purchase.py.
 - [O] 6.Search for pharmacies or masks by name, ranked by relevance to the search term.
-  - Implemented at xxx route/pharmacy.py.
+  - Implemented at route/pharmacy.py.
 - [O] 7.Process a user purchases a mask from a pharmacy, and handle all relevant data changes in an atomic transaction.
-  - Implemented at xxx route/purchase.py.
+  - Implemented at route/purchase.py.
 ### A.2. API Document
-Please read docs/API.md
+Please read API documentation in [https://github.com/talen3031/phantom_mask/docs/API.md]
 
 ### A.3. Import Data Commands
-Please run these two script commands to migrate the data into the database.
+Please run the commands to migrate the data into the database.
 
 ```bash
   python etl.py
 ```
+Please run the commands to start API.
+
+```bash
+  python app.py
+```
 ## B. Bonus Information
 
->  If you completed the bonus requirements, please fill in your task below.
 ### B.1. Test Coverage Report
 
-I wrote down the 20 unit tests for the APIs I built. Please check the test coverage report at [here](#test-coverage-report).
+ Please check the test coverage report at [https://github.com/talen3031/phantom_mask/htmlcov/index.html].
 
 You can run the test script by using the command below:
 
 ```bash
-bundle exec rspec spec
+pytest
+```
+or
+
+```bash
+coverage run -m pytest
 ```
 
 ### B.2. Dockerized
-Please check my Dockerfile / docker-compose.yml at [here](#dockerized).
+- You can find my `Dockerfile` in the project root directory. 
 
 On the local machine, please follow the commands below to build it.
 
 ```bash
-$ docker build --build-arg ENV=development -p 80:3000 -t my-project:1.0.0 .  
-$ docker-compose up -d
-
+  docker build -t phantom-mask-app .
+  docker run -p 5000:5000 phantom-mask-app
 # go inside the container, run the migrate data command.
-$ docker exec -it my-project bash
-$ rake import_data:pharmacies[PATH_TO_FILE] 
-$ rake import_data:user[PATH_TO_FILE]
+  docker exec -it phantom-mask-app bash
+  python etl.py
+
 ```
 
-### B.3. Demo Site Url
 
-The demo site is ready on [my AWS demo site](#demo-site-url); you can try any APIs on this demo site.
 
 ## C. Other Information
 
 ### C.1. ERD
 
-My ERD [erd-link](#erd-link).
+My ERD is at [https://github.com/talen3031/phantom_mask/docs/ERD.png]
 
 ### C.2. Technical Document
 
-For frontend programmer reading, please check this [technical document](technical-document) to know how to operate those APIs.
+For frontend programmer reading, please read [https://github.com/talen3031/phantom_mask/docs/API.md] to know how to operate those APIs.
 
 - --

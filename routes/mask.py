@@ -31,9 +31,15 @@ def list_masks(pharmacy_id):
 
     if order not in ('asc', 'desc'):
         return jsonify({"error": "order must be 'asc' or 'desc'"}), 400
-
+    
     conn = get_db()
     cur = conn.cursor()
+    # 確認 pharmacy_id 是否存在    
+
+    cur.execute("SELECT 1 FROM pharmacy WHERE id = ?", (pharmacy_id,))
+    if not cur.fetchone():
+        conn.close()
+        return jsonify({"error": f"pharmacy {pharmacy_id} not found"}), 404
     
     #轉成大寫
     order=order.upper()
