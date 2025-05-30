@@ -34,7 +34,7 @@ Please run the commands to start API.
 
 ### B.1. Test Coverage Report
 
- Please check the test coverage report at phantom_mask/htmlcov.
+ Please check the test coverage report at htmlcov.
 
 You can run the test script by using the command below:
 
