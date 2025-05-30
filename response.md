@@ -17,7 +17,7 @@
 - [O] 7.Process a user purchases a mask from a pharmacy, and handle all relevant data changes in an atomic transaction.
   - Implemented at route/purchase.py.
 ### A.2. API Document
-Please read API documentation in [https://github.com/talen3031/phantom_mask/docs/API.md]
+Please read API documentation in docs/API.md
 
 ### A.3. Import Data Commands
 Please run the commands to migrate the data into the database.
@@ -34,7 +34,7 @@ Please run the commands to start API.
 
 ### B.1. Test Coverage Report
 
- Please check the test coverage report at [https://github.com/talen3031/phantom_mask/htmlcov/index.html].
+ Please check the test coverage report at phantom_mask/htmlcov.
 
 You can run the test script by using the command below:
 
@@ -67,10 +67,10 @@ On the local machine, please follow the commands below to build it.
 
 ### C.1. ERD
 
-My ERD is at [https://github.com/talen3031/phantom_mask/docs/ERD.png]
+My ERD is at docs/ERD.png
 
 ### C.2. Technical Document
 
-For frontend programmer reading, please read [https://github.com/talen3031/phantom_mask/docs/API.md] to know how to operate those APIs.
+For frontend programmer reading, please read docs/API.md to know how to operate those APIs.
 
 - --
